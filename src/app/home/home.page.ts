@@ -1,6 +1,5 @@
 import { Seleccion } from './../core/model/seleccion';
 import { GeneradorHoteles } from './../core/model/generador-hoteles';
-import { Filtrador } from './../core/model/filtrador';
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { Categoria } from '../core/model/categoria';

@@ -5,7 +5,18 @@
 </ion-header>
 
 <ion-content>
-<h1>{{this.hotel.nombre}}</h1>
-<h1>{{this.hotel.categoria+1}}</h1>
-<ion-button (click) = "accionBoton()" >Home</ion-button>
+  
+  <h1>{{hotel.nombre}}</h1>
+  <h1>Categoria:</h1>
+    <h2>{{nombreCategoria(hotel.categoria)}}</h2>
+  <h1>Capacidad:</h1>
+    <h2>{{nombreCapacidad(hotel.tiposHabitacion[0].tipoHabitacion.capacidad)}}</h2>
+  <h1>Tipo de cama:</h1>
+    <h2>{{nombreCamas(hotel.tiposHabitacion[0].tipoHabitacion.camas)}}</h2>
+  <h1>Precio:</h1>
+    <h2>{{hotel.tiposHabitacion[0].precio}}</h2>
+  <h1>Extras:</h1>
+    <h2>{{nombreExtras(hotel.tiposHabitacion[0].tipoHabitacion.complementos.extras)}}</h2>
+
+  <ion-button (click)="accionBoton()">Home</ion-button>
 </ion-content>
