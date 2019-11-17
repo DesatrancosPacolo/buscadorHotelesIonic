@@ -8,14 +8,17 @@
   <div *ngFor="let hotel of hotelesFiltrados">
     <ion-card>
       <ion-card-header>
-        <ion-card-subtitle>{{hotel.categoria}}</ion-card-subtitle>
+        <h1>Nombre del Hotel</h1>
         <ion-card-title>{{hotel.nombre}}</ion-card-title>
+        <h2>Categoria:</h2>
+        <ion-card-subtitle>{{hotel.categoria+1}}</ion-card-subtitle>
       </ion-card-header>
     
       <ion-card-content>
+        <h3>Precio:</h3>
         <ion-label>{{hotel.tiposHabitacion[0].precio}}</ion-label>
-        
-        <ion-button  [routerLink]="['/resultado-habitacion',hotel]">Saber mas...</ion-button>
+        <br>
+        <ion-button (click) = "accionBoton(hotel)">Saber mas...</ion-button>
       </ion-card-content>
     </ion-card>
   </div>

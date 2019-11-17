@@ -16,7 +16,7 @@ export class ResultadoHotelesPage implements OnInit {
 
   private _seleccion:Seleccion;
 
-  constructor(private route: ActivatedRoute, public router: Router) {
+  constructor( public router: Router) {
     this._totalHoteles=new GeneradorHoteles().getHoteles();
     this._seleccion = this.router.getCurrentNavigation().extras.state.seleccion;
     this.filtrar();
@@ -73,7 +73,7 @@ export class ResultadoHotelesPage implements OnInit {
 
    private filtrarCategoria(hoteles:Hotel[]):Hotel[]{
     let retorno:Hotel[];
-    retorno = hoteles.filter((hotel)=>hotel.$categoria.toString()===Categoria[this.seleccion.categoria]);
+    retorno = hoteles.filter((hotel)=>hotel.$categoria===Categoria[this.seleccion.categoria]);
     return retorno;
    }
 
@@ -91,14 +91,17 @@ export class ResultadoHotelesPage implements OnInit {
   ngOnInit() {
   }
 
-   obtenerHotel(hotel: Hotel) {
-     let navigationExtras: NavigationExtras = {
-       state: {
-         
-       }
-     }
-     this.router.navigate(['resultado-habitacion'], navigationExtras);
-   }
+   public accionBoton(hotel:Hotel) {
+     console.log("estamosDentro"+hotel.$nombre);
+      let navigationExtras: NavigationExtras = {
+        state: {
+          seleccion: hotel
+        }
+      }
+      this.router.navigate(['resultado-habitacion'], navigationExtras);
+
+
+    }
 
 
     /**
