@@ -1,3 +1,4 @@
+import { Camas } from './../core/model/camas.enum';
 import { Categoria } from './../core/model/categoria';
 import { Seleccion } from './../core/model/seleccion';
 import { GeneradorHoteles } from './../core/model/generador-hoteles';
@@ -48,7 +49,7 @@ export class ResultadoHotelesPage implements OnInit {
     hoteles.forEach(miHotel => {
       let encontrado:boolean=false;
       miHotel.$tiposHabitacion.forEach(habitacion => {
-        let extras = habitacion.tipoHabitacion.complementos.extras.filter((extra)=>this.seleccion.extras.includes(extra));
+        let extras = habitacion.tipoHabitacion[0].complementos.extras.filter((extra)=>this.seleccion.extras.includes(extra));
         if (extras.length>0) {
           encontrado=true;
         }
@@ -80,7 +81,7 @@ export class ResultadoHotelesPage implements OnInit {
    private filtrarCamas(hoteles:Hotel[]):Hotel[]{
     let retorno:Hotel[];
     hoteles.forEach(miHotel => {
-      let habitaciones=miHotel.$tiposHabitacion.filter((habitacion)=>habitacion.tipoHabitacion.camas.toString()===this.seleccion.camas);
+      let habitaciones=miHotel.$tiposHabitacion.filter((habitacion)=>habitacion.tipoHabitacion.camas===Camas[this.seleccion.camas]);
       if(habitaciones.length>0){
         retorno.push(miHotel);
       }
@@ -92,7 +93,6 @@ export class ResultadoHotelesPage implements OnInit {
   }
 
    public accionBoton(hotel:Hotel) {
-     console.log("estamosDentro"+hotel.$nombre);
       let navigationExtras: NavigationExtras = {
         state: {
           seleccion: hotel
