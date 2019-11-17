@@ -1,13 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-  <div>
-    <ion-button (click)="obtenerHoteles()">generarHoteles</ion-button>
-  </div>
-</ion-content>
+<h3>Categoria</h3>
+<select  name="categoria" [(ngModel)]="_categoriaSeleccionada">
+  <option *ngFor="let categoriaUno of _categorias" value="{{categoriaUno}}"> {{categoriaUno}}
+  </option>
+</select>
+<h3>Capacidad</h3>
+<select  name="capacidad" [(ngModel)]="_capacidadSeleccionada">
+  <option *ngFor="let capacidadUno of _capacidades" value="{{capacidadUno}}"> {{capacidadUno}}
+  </option>
+</select>
+<h3>Cama</h3>
+<select  name="camas" [(ngModel)]="_tipoCamaSeleccionada">
+  <option *ngFor="let camasUno of _tiposCamas" value="{{camasUno}}"> {{camasUno}}
+  </option>
+</select>
+
+<div>
+  <ng-template ngFor let-extrasUno [ngForOf]="_extras" let-i="index">
+    <p><input [(ngModel)]="_extraSeleccionados[i]"  type="checkbox">{{extrasUno}}</p>
+  </ng-template>
+</div>
+
+  <ion-button (click) = "accionBoton()">Aceptar </ion-button>

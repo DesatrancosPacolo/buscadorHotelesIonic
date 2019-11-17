@@ -8,12 +8,33 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./resultado-habitacion.page.scss'],
 })
 export class ResultadoHabitacionPage implements OnInit {
-  hote: Hotel;
-  constructor(private route: ActivatedRoute, public router: Router ) {
-    this.hote = this.router.getCurrentNavigation().extras.state.hotel;
+  private _hotel: Hotel;
+  constructor( public router: Router ) {
+    this._hotel = this.router.getCurrentNavigation().extras.state.seleccion;
+    console.log(this._hotel);
   }
 
   ngOnInit() {
   }
+  
+  public accionBoton(){
+    this.router.navigate(['home']);
+  }
+
+    /**
+     * Getter hotel
+     * @return {Hotel}
+     */
+	public get hotel(): Hotel {
+		return this._hotel;
+	}
+
+    /**
+     * Setter hotel
+     * @param {Hotel} value
+     */
+	public set hotel(value: Hotel) {
+		this._hotel = value;
+	}
 
 }
